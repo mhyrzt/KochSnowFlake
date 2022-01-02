@@ -3,6 +3,7 @@
 The Koch snowflake is a fractal curve and one of the earliest fractals to have been described.
 
 for constructing this fractal humans should follow these steps:
+
     1. divide the line segment into three segments of equal length.
     2. draw an equilateral triangle that has the middle segment from step 1 as its base and points outward.
     3. remove the line segment that is the base of the triangle from step 2.
