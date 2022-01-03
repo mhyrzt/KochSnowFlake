@@ -1,19 +1,25 @@
 import React from "react";
-import useKSF from "../hooks/useKoch";
-import { Position } from "../hooks/useKoch/types";
+import { KochSnowFlakeProps, LinePoints, Position } from "../utils/types";
+import { Line } from "react-lineto";
 
-const KochSnowlake: React.FC = () => {
-    const ref = React.useRef<HTMLDivElement>(null);
-    
+import useWindowDimension from "../hooks/useWindowDimension";
+import KSF from "../utils/KSF";
 
-    const [center, setCenter] = React.useState<Position>({
-        x: document.documentElement.clientWidth / 2,
-        y: document.documentElement.clientHeight / 2,
-    });
-    const [length, setLength] = React.useState<number>(1000);
-    const ksf = useKSF(length, center);
+const KochSnowlake: React.FC<KochSnowFlakeProps> = ({ iteration }) => {
+    const { getCenter, getLength } = useWindowDimension();
 
-    return <>{ksf.renderKSF("container")}</>;
+    const renderKSF = () => {
+        const getLine = (linePoints: LinePoints, key: number) => (
+            <Line {...linePoints} key={key} />
+        );
+        const linePoses = KSF.getLinesPositions(
+            KSF.getIeteration(getLength(), getCenter(), iteration)
+        );
+        const bottom = linePoses.map(getLine);
+        return bottom;
+    };
+
+    return <>{renderKSF()}</>;
 };
 
 export default KochSnowlake;

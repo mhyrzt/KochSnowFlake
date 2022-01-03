@@ -1,12 +1,6 @@
-import { Position, Action, ArrayPosition } from "./types";
-
-const ACTIONS = {
-    NEXT: { type: "NEXT" },
-    PREV: { type: "PREV" },
-};
+import { Position, ArrayPosition, LinePoints, ArrayLinePoints } from "./types";
 
 class KSF {
-    
     static rotatePosition({ x, y }: Position, theta: number): Position {
         const xp: number = x * Math.cos(theta) - y * Math.sin(theta);
         const yp: number = x * Math.sin(theta) + y * Math.cos(theta);
@@ -75,12 +69,11 @@ class KSF {
         function getNewValues(i: number): ArrayPosition {
             const points: ArrayPosition = [prev[i], prev[i + 1]];
             const theta: number = KSF.getAngle(points[0], points[1]);
-            const rot = (p: Position) => KSF.rotatePosition(p, theta);
-            const [p1, p5] = KSF.makeStraight(points[0], points[1]);
-            const [p2, p4] = KSF.getThirds(p1, p5);
 
-            const p3 = KSF.rotateArround(p2, p4, Math.PI / 3);
-            return [p1, p2, p3, p4, p5].map(rot);
+            const [p1, p2] = KSF.makeStraight(points[0], points[1]);
+            return [p1, ...KSF.getTriangle(p1, p2), p2].map((p) =>
+                KSF.rotatePosition(p, theta)
+            );
         }
 
         const state: ArrayPosition = [];
@@ -91,24 +84,30 @@ class KSF {
         return state;
     }
 
-    static prevIteration(prev: ArrayPosition): ArrayPosition {
-        if (prev.length === 2) return prev;
-        return prev.filter((p, idx) => idx % 4 === 0);
+    static flipAlongX({ x, y }: Position): Position {
+        return { x, y: -y };
     }
 
-    static reducer(prev: ArrayPosition, action: Action): ArrayPosition {
-        switch (action.type) {
-            case ACTIONS.NEXT.type: {
-                return KSF.nextIteration(prev);
-            }
-            case ACTIONS.PREV.type: {
-                return KSF.prevIteration(prev);
-            }
-            default: {
-                return prev;
-            }
+    static flipAllAlongX(positions: ArrayPosition): ArrayPosition {
+        return positions.map(KSF.flipAlongX);
+    }
+
+    static getIeteration(l: number, c: Position, i: number): ArrayPosition {
+        let current = KSF.getInitialState(l, c);
+        for (let j = 0; j < i; j++) {
+            current = KSF.nextIteration(current);
         }
+        return current;
+    }
+
+    static getLinesPositions(positions: ArrayPosition): ArrayLinePoints {
+        const linePoints: ArrayLinePoints = [];
+        for (let i = 0; i < positions.length - 1; i++) {
+            const { x: x0, y: y0 } = positions[i];
+            const { x: x1, y: y1 } = positions[i + 1];
+            linePoints.push({ x0, x1, y0, y1 });
+        }
+        return linePoints;
     }
 }
-export { ACTIONS };
 export default KSF;

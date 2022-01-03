@@ -1,3 +1,33 @@
 * {
-  font-family: 'Roboto Mono';
+    font-family: "Roboto Mono";
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 250px;
+    height: 100px;
+    top: 2.5%;
+    left: 2.5%;
+}
+
+.info input {
+    width: 10%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    padding: 5%;
+    flex-direction: row;
+}
+
+.row button {
+    background-color: white;
+    border: none;
+    cursor: pointer;
 }
