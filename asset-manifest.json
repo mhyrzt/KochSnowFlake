@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/KochSnowFlake/static/css/main.911e9635.css",
+    "main.js": "/KochSnowFlake/static/js/main.84462fb8.js",
+    "index.html": "/KochSnowFlake/index.html",
+    "main.911e9635.css.map": "/KochSnowFlake/static/css/main.911e9635.css.map",
+    "main.84462fb8.js.map": "/KochSnowFlake/static/js/main.84462fb8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.911e9635.css",
+    "static/js/main.84462fb8.js"
+  ]
+}
