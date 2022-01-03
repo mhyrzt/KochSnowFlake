@@ -13,5 +13,10 @@ npm i
 npm start
 ```
 
+### Normal
+
 ![N5N](screenshots/5N.PNG)
+
+### Inverse
+
 ![N5I](screenshots/5I.PNG)
