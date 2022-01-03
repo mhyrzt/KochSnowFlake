@@ -1,8 +1,9 @@
 # Koch Snowflake
 
-[WEBPAGE]()
+if you just want to play with it, follow, [FOLLOW THIS LINK](https://mhyrzt.github.io/KochSnowFlake/)
 
-[HOW DOES IT WORK]()
+if you are curios about math of this project, [FOLLOW THIS LINK](https://github.com/mhyrzt/KochSnowFlake/blob/main/DESCRIPTION.ipynb)
+
 ## installation
 
 ```bash
