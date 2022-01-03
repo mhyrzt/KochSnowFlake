@@ -15,12 +15,15 @@ interface LinePoints {
 }
 
 interface KochSnowFlakeProps {
+    inverse: boolean;
     iteration: number;
 }
 
 interface InfoProps {
     iteration: number;
     setIteration: React.Dispatch<React.SetStateAction<number>>;
+    inverse: boolean;
+    setInverse: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 type ArrayLinePoints = Array<LinePoints>;

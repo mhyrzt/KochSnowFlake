@@ -1,19 +1,27 @@
 * {
     font-family: "Roboto Mono";
+    background-color: black;
+    color: white;
+}
+
+h2 {
+    text-align: center;
 }
 
 .info {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     position: absolute;
     width: 250px;
     height: 100px;
     top: 2.5%;
     left: 2.5%;
+    font-size: smaller;
 }
 
 .info input {
-    width: 10%;
+    width: 15%;
     border-top: none;
     border-left: none;
     border-right: none;

@@ -16,7 +16,7 @@ export default function useWindowDimension() {
     const { width, height } = windowDimensions;
 
     function getLength(): number {
-        return Math.min(width, height) / 2;
+        return Math.min(width, height) / 3 * 2;
     }
 
     function getCenter(): Position {
