@@ -10,4 +10,8 @@ if you are curios about math of this project, [FOLLOW THIS LINK](https://github.
 git clone git@github.com:mhyrzt/KochSnowFlake.git
 cd KochSnowFlake
 npm i
+npm start
 ```
+
+![N5N](screenshots/5N.PNG)
+![N5I](screenshots/5I.PNG)
